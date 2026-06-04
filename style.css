@@ -1119,3 +1119,36 @@ html[data-theme="light"] .hero-quote {
 html[data-theme="light"] .hero-quote::before {
   color: rgba(99, 102, 241, 0.35);
 }
+
+/* Light theme mobile menu */
+@media (max-width: 768px) {
+  html[data-theme="light"] .nav-links {
+    background: #ffffff !important;
+  }
+
+  html[data-theme="light"] .nav-link {
+    color: #334155 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+
+  html[data-theme="light"] .nav-link:hover,
+  html[data-theme="light"] .nav-link.active {
+    color: #6366f1 !important;
+    background: transparent !important;
+  }
+
+  html[data-theme="light"] .logo span {
+    color: #111827 !important;
+  }
+
+  html[data-theme="light"] .desktop-theme,
+  html[data-theme="light"] .menu-toggle {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border-color: #e5e7eb !important;
+  }
+
+  html[data-theme="light"] .menu-toggle span {
+    background: #111827 !important;
+  }
+}
