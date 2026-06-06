@@ -200,3 +200,185 @@ scrollTopBtn?.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
+
+const gameBoard = document.getElementById("gameBoard");
+const gameStatus = document.getElementById("gameStatus");
+const resetGameBtn = document.getElementById("resetGameBtn");
+
+let boardState = ["", "", "", "", "", "", "", "", ""];
+let currentPlayer = "X";
+let gameActive = true;
+
+const humanPlayer = "X";
+const computerPlayer = "O";
+
+const winningCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
+function updateGameStatus(message) {
+  if (gameStatus) {
+    gameStatus.textContent = message;
+  }
+}
+
+function getWinningCombination() {
+  return winningCombinations.find(([a, b, c]) => {
+    return (
+      boardState[a] &&
+      boardState[a] === boardState[b] &&
+      boardState[a] === boardState[c]
+    );
+  });
+}
+
+function finishGameIfNeeded() {
+  const winningCombination = getWinningCombination();
+
+  if (winningCombination) {
+    gameActive = false;
+
+    winningCombination.forEach((winningIndex) => {
+      const winningCell = gameBoard.querySelector(
+        `[data-index="${winningIndex}"]`,
+      );
+      winningCell?.classList.add("winner");
+    });
+
+    const winner = boardState[winningCombination[0]];
+
+    if (winner === humanPlayer) {
+      updateGameStatus("You win!");
+    } else {
+      updateGameStatus("Computer wins!");
+    }
+
+    return true;
+  }
+
+  if (boardState.every(Boolean)) {
+    gameActive = false;
+    updateGameStatus("It's a draw!");
+    return true;
+  }
+
+  return false;
+}
+
+function markCell(index, player) {
+  const cell = gameBoard.querySelector(`[data-index="${index}"]`);
+
+  if (!cell || boardState[index]) return;
+
+  boardState[index] = player;
+  cell.textContent = player;
+  cell.classList.add(player.toLowerCase());
+}
+
+function getAvailableMoves() {
+  return boardState
+    .map((value, index) => (value === "" ? index : null))
+    .filter((index) => index !== null);
+}
+
+function getSmartComputerMove() {
+  const availableMoves = getAvailableMoves();
+
+  // 1. Αν ο υπολογιστής μπορεί να κερδίσει, παίζει εκεί
+  for (const move of availableMoves) {
+    boardState[move] = computerPlayer;
+
+    if (getWinningCombination()) {
+      boardState[move] = "";
+      return move;
+    }
+
+    boardState[move] = "";
+  }
+
+  // 2. Αν ο χρήστης πάει να κερδίσει, τον μπλοκάρει
+  for (const move of availableMoves) {
+    boardState[move] = humanPlayer;
+
+    if (getWinningCombination()) {
+      boardState[move] = "";
+      return move;
+    }
+
+    boardState[move] = "";
+  }
+
+  // 3. Αν είναι ελεύθερο το κέντρο, το παίρνει
+  if (boardState[4] === "") {
+    return 4;
+  }
+
+  // 4. Μετά προτιμά γωνίες
+  const corners = [0, 2, 6, 8].filter((index) => boardState[index] === "");
+
+  if (corners.length > 0) {
+    return corners[Math.floor(Math.random() * corners.length)];
+  }
+
+  // 5. Αλλιώς παίζει τυχαία σε ό,τι έχει μείνει
+  return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+}
+
+function makeComputerMove() {
+  if (!gameActive) return;
+
+  updateGameStatus("Thinking...");
+
+  setTimeout(() => {
+    const computerMove = getSmartComputerMove();
+
+    if (computerMove === undefined) return;
+
+    markCell(computerMove, computerPlayer);
+
+    if (finishGameIfNeeded()) return;
+
+    currentPlayer = humanPlayer;
+    updateGameStatus("Your turn — X");
+  }, 450);
+}
+
+function handleCellClick(event) {
+  const cell = event.target.closest(".game-cell");
+
+  if (!cell || !gameActive || currentPlayer !== humanPlayer) return;
+
+  const index = Number(cell.dataset.index);
+
+  if (boardState[index]) return;
+
+  markCell(index, humanPlayer);
+
+  if (finishGameIfNeeded()) return;
+
+  currentPlayer = computerPlayer;
+  makeComputerMove();
+}
+
+function resetGame() {
+  boardState = ["", "", "", "", "", "", "", "", ""];
+  currentPlayer = humanPlayer;
+  gameActive = true;
+
+  document.querySelectorAll(".game-cell").forEach((cell) => {
+    cell.textContent = "";
+    cell.classList.remove("x", "o", "winner");
+  });
+
+  updateGameStatus("Your turn — X");
+}
+
+gameBoard?.addEventListener("click", handleCellClick);
+resetGameBtn?.addEventListener("click", resetGame);

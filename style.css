@@ -1330,3 +1330,131 @@ html[data-theme="light"] .scroll-top-btn:hover {
     height: 26px;
   }
 }
+
+.playground-section {
+  background: transparent;
+}
+
+.tic-tac-toe-card {
+  max-width: 520px;
+  margin: 34px auto 0;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--card-bg);
+  box-shadow: 0 18px 45px var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.game-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.game-header h3 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.game-header p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.game-reset-btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent);
+  padding: 9px 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.game-reset-btn:hover {
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.game-status {
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.game-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text);
+  font-size: clamp(34px, 8vw, 52px);
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.game-cell:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.12);
+}
+
+.game-cell.x {
+  color: var(--accent);
+}
+
+.game-cell.o {
+  color: #2dd4bf;
+}
+
+.game-cell.winner {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.2);
+}
+
+html[data-theme="light"] .game-cell {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme="light"] .game-cell.o {
+  color: #0891b2;
+}
+
+@media (max-width: 600px) {
+  .tic-tac-toe-card {
+    padding: 22px;
+  }
+
+  .game-header {
+    flex-direction: column;
+  }
+
+  .game-reset-btn {
+    width: 100%;
+  }
+
+  .game-board {
+    gap: 10px;
+  }
+
+  .game-cell {
+    border-radius: 16px;
+  }
+}
