@@ -178,3 +178,25 @@ document.addEventListener("click", (event) => {
     menuToggle.setAttribute("aria-label", "Open menu");
   }
 });
+
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+const aboutSection = document.getElementById("about");
+
+window.addEventListener("scroll", () => {
+  if (!aboutSection || !scrollTopBtn) return;
+
+  const aboutTop = aboutSection.offsetTop;
+
+  if (window.scrollY >= aboutTop - 120) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
+  }
+});
+
+scrollTopBtn?.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
