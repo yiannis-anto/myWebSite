@@ -1,0 +1,242 @@
+---
+import "../styles/global.css";
+
+const iconBase = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+const frontendSkills = [
+  { name: "TypeScript", icon: `${iconBase}/typescript/typescript-original.svg` },
+  { name: "JavaScript", icon: `${iconBase}/javascript/javascript-original.svg` },
+  { name: "React", icon: `${iconBase}/react/react-original.svg` },
+  { name: "HTML & CSS", icon: `${iconBase}/html5/html5-original.svg` },
+  { name: "Bootstrap", icon: `${iconBase}/bootstrap/bootstrap-original.svg` },
+  { name: "Form.io", icon: `${iconBase}/json/json-original.svg` },
+];
+const backendSkills = [
+  { name: ".NET 8", icon: `${iconBase}/dotnetcore/dotnetcore-original.svg` },
+  { name: "C#", icon: `${iconBase}/csharp/csharp-original.svg` },
+  { name: "Next.js", icon: `${iconBase}/nextjs/nextjs-original.svg` },
+  { name: "REST APIs", icon: `${iconBase}/fastapi/fastapi-original.svg` },
+  { name: "JWT Authentication", icon: `${iconBase}/json/json-original.svg` },
+  { name: "Fast API", icon: `${iconBase}/fastapi/fastapi-original.svg` },
+];
+const dataSkills = [
+  { name: "PostgreSQL", icon: `${iconBase}/postgresql/postgresql-original.svg` },
+  { name: "Redis", icon: `${iconBase}/redis/redis-original.svg` },
+  { name: "RabbitMQ", icon: `${iconBase}/rabbitmq/rabbitmq-original.svg` },
+  { name: "Git", icon: `${iconBase}/git/git-original.svg` },
+  { name: "UNIX", icon: `${iconBase}/linux/linux-original.svg` },
+  { name: "Figma", icon: `${iconBase}/figma/figma-original.svg` },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Ioannis Antonogiannakis — Full Stack Developer building modern applications with React, .NET and TypeScript."
+    />
+    <link rel="icon" type="image/png" href="/content/ia_image.png" />
+    <title>Ioannis Antonogiannakis | Full Stack Developer</title>
+  </head>
+  <body>
+    <div class="page-background" aria-hidden="true">
+      <div class="blob blob-one"></div>
+      <div class="blob blob-two"></div>
+      <div class="blob blob-three"></div>
+    </div>
+
+    <header id="site-header">
+      <nav class="nav-shell" aria-label="Main navigation">
+        <a class="brand" href="#home">
+          <span><span class="brand-muted">Ioannis Antonogiannakis</span>
+        </a>
+        <div class="desktop-nav">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="#about">About</a><a href="#experience">Experience</a>
+        <a href="#projects">Projects</a><a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="shell hero-inner">
+          <div class="eyebrow reveal">Hello, I’m</div>
+          <h1 class="reveal"><span class="gradient-text">Ioannis</span><br />Antonogiannakis</h1>
+          <p class="hero-role reveal">Full-Stack Developer</p>
+          <p class="hero-copy reveal">
+            I build modern web applications with React, .NET and TypeScript—from
+            intuitive interfaces to reliable APIs and production systems.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="button primary" href="#projects">View My Work <span>→</span></a>
+            <a class="button secondary" href="#contact">Get In Touch</a>
+            <a class="text-link" href="/content/CV_ANTONOGIANNAKIS.pdf" download>Download CV ↓</a>
+          </div>
+          <div class="social-row reveal">
+            <a href="https://www.linkedin.com/in/ioannis-antonogiannakis/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <span>Heraklion, Crete</span>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#about"><span>Scroll</span><b>↓</b></a>
+      </section>
+
+      <section id="about" class="section">
+        <div class="shell about-grid">
+          <div>
+            <span class="section-label">About me</span>
+            <h2>Making complex systems<br /><span class="gradient-text">feel simple</span></h2>
+            <div class="body-copy">
+              <p>
+                I’m Ioannis, a full-stack developer based in Heraklion, Crete.
+                I work across the stack, building clean interfaces, dependable
+                APIs and maintainable application logic.
+              </p>
+            
+            </div>
+            <a class="button primary compact" href="#contact">Let’s work together →</a>
+          </div>
+          <div class="about-side">
+            <div class="stats-grid">
+              <article class="glow-card"><strong class="gradient-text">2+</strong><span>Years of experience</span></article>
+              <article class="glow-card"><strong class="gradient-text">3+</strong><span>Projects completed</span></article>
+              <article class="glow-card"><strong class="gradient-text">10+</strong><span>Technologies used</span></article>
+              <article class="glow-card"><strong class="gradient-text">100%</strong><span>Focused on quality</span></article>
+            </div>
+            <p class="mini-title education-title">Education</p>
+            <article class="glow-card education-card">
+              <p>University of Crete</p>
+              <h3>BSc Computer Science</h3>
+              <span>Programming, databases, software engineering and web development.</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="shell">
+          <div class="center-heading">
+            <span class="section-label">Experience</span>
+            <h2>Where I’ve<br /><span class="gradient-text">worked</span></h2>
+          </div>
+          <div class="experience-list">
+            <article class="job glow-card">
+              <div class="job-head">
+                <div><div class="job-title-row"><h3>Full Stack Developer</h3></div><p>Satori Analytics</p></div>
+                <time>Jun 2026 — Present</time>
+              </div>
+              <div class="pills"><span>React</span><span>Fast API</span><span>TypeScript</span><span>Next JS</span></div>
+            </article>
+            <article class="job glow-card">
+              <div class="job-head">
+                <div><h3>Full Stack Developer</h3><p>European Dynamics</p></div>
+                <time>Nov 2024 — Jun 2026</time>
+              </div>
+              <p class="job-copy">Built React and .NET applications, REST APIs, Redis caching, JWT authentication, RabbitMQ integrations and dynamic Form.io workflows.</p>
+              <div class="pills"><span>React</span><span>.NET 8</span><span>Redis</span><span>RabbitMQ</span><span>Form.io</span></div>
+            </article>
+            <article class="job glow-card">
+              <div class="job-head">
+                <div><h3>IT Support &amp; Security Technician</h3><p>Greek Army</p></div>
+                <time>Nov 2023 — Aug 2024</time>
+              </div>
+              <p class="job-copy">Maintained desktops, servers and networks while supporting secure systems and troubleshooting hardware and software.</p>
+              <div class="pills"><span>Networking</span><span>System Administration</span><span>Security</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="shell">
+          <div class="center-heading">
+            <span class="section-label">Projects</span>
+            <h2>Things I’ve<br /><span class="gradient-text">built</span></h2>
+          </div>
+          <div class="project-grid">
+            <article class="project glow-card"><span class="project-number">01</span><h3>NCBI Query Web Application</h3><p>Creates complex NCBI search queries through a simple, responsive interface.</p><div class="pills"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>API</span></div></article>
+            <article class="project glow-card"><span class="project-number">02</span><h3>Hotel Booking Web Application</h3><p>A complete interface for searching and booking hotel rooms, designed in Figma.</p><div class="pills"><span>Figma</span><span>Bootstrap</span><span>PostgreSQL</span><span>Java</span></div></article>
+            <article class="project glow-card"><span class="project-number">03</span><h3>Programming Language &amp; Compiler</h3><p>Designed a language, compiler components and standard libraries as a team project.</p><div class="pills"><span>C++</span><span>Compilers</span><span>OOP</span></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="shell">
+          <div class="center-heading">
+            <span class="section-label">Skills</span>
+            <h2>Technologies I have<br /><span class="gradient-text">worked with</span></h2>
+          </div>
+          <div class="skill-sections">
+            <div class="skill-group"><h3>Frontend</h3><div class="skill-grid">{frontendSkills.map((item) => <div class="skill"><img src={item.icon} alt="" loading="lazy" /><p>{item.name}</p></div>)}</div></div>
+            <div class="skill-group"><h3>Backend</h3><div class="skill-grid">{backendSkills.map((item) => <div class="skill"><img src={item.icon} alt="" loading="lazy" /><p>{item.name}</p></div>)}</div></div>
+            <div class="skill-group"><h3>Data & Tools</h3><div class="skill-grid">{dataSkills.map((item) => <div class="skill"><img src={item.icon} alt="" loading="lazy" /><p>{item.name}</p></div>)}</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="shell contact-inner">
+          <span class="section-label">Contact</span>
+          <h2>Let’s build<br /><span class="gradient-text">something great</span></h2>
+          <p>Have an opportunity, collaboration or project in mind?</p>
+          <a class="email" href="mailto:iantonoyiannakis@gmail.com">iantonoyiannakis@gmail.com <span>↗</span></a>
+          <div class="contact-social"><a href="https://github.com/yiannis-anto">GitHub</a><a href="https://www.linkedin.com/in/ioannis-antonogiannakis/">LinkedIn</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="shell"><p>© {new Date().getFullYear()} Ioannis Antonogiannakis</p></div></footer>
+
+    <button id="scrollTop" class="scroll-top" type="button" aria-label="Back to top">
+      <svg class="scroll-progress" viewBox="0 0 52 52" aria-hidden="true">
+        <circle class="scroll-track" cx="26" cy="26" r="23"></circle>
+        <circle class="scroll-value" cx="26" cy="26" r="23"></circle>
+      </svg>
+      <svg class="scroll-arrow" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.5 13.5 12 8l5.5 5.5M12 8v9"></path>
+      </svg>
+    </button>
+
+    <script is:inline>
+      const mobileToggle = document.querySelector("#mobileToggle");
+      const mobileNav = document.querySelector("#mobileNav");
+      const scrollTopButton = document.querySelector("#scrollTop");
+      mobileToggle?.addEventListener("click", () => {
+        mobileToggle.classList.toggle("open");
+        mobileNav?.classList.toggle("open");
+      });
+      mobileNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+        mobileToggle?.classList.remove("open");
+        mobileNav.classList.remove("open");
+      }));
+      const updateScrollProgress = () => {
+        const scrollable = document.documentElement.scrollHeight - innerHeight;
+        const progress = scrollable > 0 ? Math.min(scrollY / scrollable, 1) : 0;
+        const circumference = 2 * Math.PI * 23;
+        scrollTopButton?.style.setProperty(
+          "--scroll-offset",
+          String(circumference * (1 - progress)),
+        );
+        scrollTopButton?.classList.toggle("visible", scrollY > 180);
+        document.querySelector("#site-header")?.classList.toggle("scrolled", scrollY > 20);
+      };
+      window.addEventListener("scroll", updateScrollProgress, { passive: true });
+      window.addEventListener("resize", updateScrollProgress);
+      scrollTopButton?.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
+      updateScrollProgress();
+    </script>
+  </body>
+</html>

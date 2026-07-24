@@ -16,32 +16,40 @@ if (menuToggle && navLinksContainer) {
     navLinksContainer.classList.toggle("open");
 
     const isOpen = navLinksContainer.classList.contains("open");
+    document.body.classList.toggle("menu-open", isOpen);
     menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
   });
 }
 
-/* Light / Dark theme - ONE button only */
+/* Accent theme switcher */
 
 const themeToggle = document.getElementById("desktopThemeToggle");
 const html = document.documentElement;
 
+const themes = [
+  "amethyst",
+  "sapphire",
+  "aquamarine",
+  "emerald",
+  "amber",
+  "ruby",
+  "quartz",
+];
 const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme) {
+if (savedTheme && themes.includes(savedTheme)) {
   html.setAttribute("data-theme", savedTheme);
 } else {
-  html.setAttribute("data-theme", "dark");
+  html.setAttribute("data-theme", "amethyst");
 }
 
 function updateThemeButton() {
-  const currentTheme = html.getAttribute("data-theme");
+  const currentTheme = html.getAttribute("data-theme") || "amethyst";
 
   if (themeToggle) {
     themeToggle.setAttribute(
       "aria-label",
-      currentTheme === "dark"
-        ? "Switch to light theme"
-        : "Switch to dark theme",
+      `Current theme: ${currentTheme}. Click to change theme`,
     );
   }
 }
@@ -50,8 +58,9 @@ updateThemeButton();
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    const currentTheme = html.getAttribute("data-theme");
-    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    const currentTheme = html.getAttribute("data-theme") || "amethyst";
+    const currentIndex = themes.indexOf(currentTheme);
+    const nextTheme = themes[(currentIndex + 1) % themes.length];
 
     html.setAttribute("data-theme", nextTheme);
     localStorage.setItem("theme", nextTheme);
@@ -157,6 +166,7 @@ navLinks.forEach((link) => {
     if (menuToggle && navLinksContainer) {
       menuToggle.classList.remove("open");
       navLinksContainer.classList.remove("open");
+      document.body.classList.remove("menu-open");
       menuToggle.setAttribute("aria-label", "Open menu");
     }
   });
@@ -175,6 +185,7 @@ document.addEventListener("click", (event) => {
   if (!clickedInsideMenu && !clickedMenuButton) {
     menuToggle.classList.remove("open");
     navLinksContainer.classList.remove("open");
+    document.body.classList.remove("menu-open");
     menuToggle.setAttribute("aria-label", "Open menu");
   }
 });
